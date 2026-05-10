@@ -20,8 +20,8 @@ export async function POST(req: NextRequest) {
         : 'Write all summaries, bullets, tags, and profile text in English.'
 
     const message = await client.messages.create({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 8096,
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 6000,
       system: `You are an expert career counsellor with 20 years experience helping people find their ideal career. Based on the user's answers, identify the 7 job titles that best match their personality, values, background, experience, and interests.
 
 Be thoughtful and specific. Consider both obvious and surprising matches. Include Dutch job market relevant titles. Reference specific things from their answers in each summary to make it feel personal, not generic.
