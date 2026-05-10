@@ -39,32 +39,48 @@ ${answersText}
 Language for response: ${language}
 ${langInstruction}
 
-Write ALL text fields in ${language === 'nl' ? 'Dutch' : 'English'} only. Set the opposite-language fields to the same value.
+IMPORTANT: Both _nl and _en fields are required in the JSON. Even if the language is "nl", still fill in the _en fields in English. Even if language is "en", fill in the _nl fields in Dutch.
 
-Return ONLY this JSON (no markdown, no extra text):
+Return ONLY this JSON structure (no markdown, no extra text):
 {
   "matches": [
     {
-      "title_nl": "functietitel",
-      "title_en": "job title",
+      "title_nl": "Job title in Dutch",
+      "title_en": "Job title in English",
       "match_score": 94,
-      "summary_nl": "2 sentences why this fits this person, referencing their answers",
-      "summary_en": "same",
-      "why_bullets_nl": ["Reden 1", "Reden 2", "Reden 3"],
-      "why_bullets_en": ["same"],
-      "tags_nl": ["Tag1", "Tag2", "Tag3"],
-      "tags_en": ["same"],
+      "summary_nl": "2-3 sentences in Dutch explaining why this fits THIS specific person, referencing their actual answers",
+      "summary_en": "Same 2-3 sentences in English",
+      "why_bullets_nl": [
+        "Jij gaf aan dat je energie krijgt van...",
+        "Je voorkeur voor...",
+        "Jouw achtergrond in..."
+      ],
+      "why_bullets_en": [
+        "You mentioned getting energy from...",
+        "Your preference for...",
+        "Your background in..."
+      ],
+      "tags_nl": ["Creatief", "Onderzoek", "Tech"],
+      "tags_en": ["Creative", "Research", "Tech"],
       "salary_indication": "€3.500 – €5.500 / maand",
-      "search_terms": ["term1", "term2", "term3"]
+      "search_terms": ["job title", "alternative title", "related role"]
     }
   ],
-  "overall_profile_nl": "2 sentence profile",
-  "overall_profile_en": "same",
-  "profile_tags_nl": ["Tag1", "Tag2", "Tag3"],
-  "profile_tags_en": ["same"]
+  "overall_profile_nl": "Short paragraph describing the user's work profile in Dutch",
+  "overall_profile_en": "Short paragraph describing the user's work profile in English",
+  "profile_tags_nl": ["Empathisch", "Analytisch", "Creatief denker"],
+  "profile_tags_en": ["Empathetic", "Analytical", "Creative thinker"]
 }
 
-Rules: exactly 7 matches, match_score 65-97 varied, sorted descending, salary format €X.XXX – €X.XXX / maand, summaries reference specific answers.`,
+Requirements:
+- Exactly 7 matches
+- match_score between 65-97, varied (not all high)
+- Sorted by match_score descending
+- salary_indication always in format "€X.XXX – €X.XXX / maand"
+- 3-5 search_terms per match (mix of Dutch and English)
+- 3-5 tags per match
+- summaries must reference SPECIFIC answers, not be generic
+- 3 why_bullets per match minimum`,
         },
       ],
     })
